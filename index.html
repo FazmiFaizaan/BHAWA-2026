@@ -38,39 +38,19 @@ body{
         rgba(0,0,0,.82),
         rgba(0,0,0,.90)
     ),
-    url('images/mask-bg.png');
+    url("images/mask-bg.png");
 
     background-size:cover;
-    background-position:center;
+    background-position:center center;
     background-repeat:no-repeat;
     background-attachment:fixed;
 
     color:var(--text);
     font-family:'Poppins',sans-serif;
-}
 
+}
 
 /* HERO */
-
-.hero{
-    height:100vh;
-
-    background:
-    linear-gradient(
-        rgba(0,0,0,.75),
-        rgba(0,0,0,.75)
-    ),
-    url('images/mask-bg.png');
-
-    background-size:cover;
-    background-position:center;
-    background-repeat:no-repeat;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-}
 
 .hero-content{
     background:transparent;
@@ -584,6 +564,21 @@ footer{
     min-width:100px;
 }
 }
+    
+/* MOBILE BACKGROUND */
+
+@media (max-width:480px){
+
+    body{
+
+        background-size:160%;
+        background-position:center center;
+        background-attachment:scroll;
+
+    }
+
+}
+    
 /* navbar */
 .navbar{
     position:fixed;
@@ -616,7 +611,7 @@ footer{
 
 .hero{
     height:100vh;
-    background:#000;
+    background:#transparent;
     position:relative;
     overflow:hidden;
 
