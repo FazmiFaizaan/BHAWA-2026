@@ -20,8 +20,6 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 
     --text:#F5F5F5;
 }
-    
-
 
 *{
     margin:0;
@@ -37,13 +35,14 @@ html{
 body{
     background:
     linear-gradient(
-        rgba(0,0,0,.88),
-        rgba(0,0,0,.88)
+        rgba(0,0,0,.82),
+        rgba(0,0,0,.90)
     ),
     url('images/mask-bg.png');
 
     background-size:cover;
     background-position:center;
+    background-repeat:no-repeat;
     background-attachment:fixed;
 
     color:var(--text);
@@ -133,43 +132,135 @@ body{
 /* SECTIONS */
 
 section{
-    padding:90px 10%;
+
+    padding:110px 10%;
+    position:relative;
+
     background:transparent;
+
     opacity:0;
     transform:translateY(50px);
     transition:1s;
+
 }
 
 section.show{
+
     opacity:1;
     transform:translateY(0);
+
 }
 
 .section-title{
-    text-align:center;
-    margin-bottom:50px;
-    font-size:2.5rem;
-    color:#D4A017; /* Mask Yellow */
+
+    position:relative;
+
+    display:inline-block;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    margin-bottom:70px;
+
+    font-size:2.7rem;
+
+    color:var(--gold-light);
+
     font-family:'Cinzel', serif;
-    letter-spacing:3px;
+
+    letter-spacing:4px;
+
 }
 
+.section-title::after{
 
+    content:"";
+
+    position:absolute;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    bottom:-15px;
+
+    width:120px;
+
+    height:3px;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        var(--gold-light),
+        transparent
+    );
+
+}
+
+/* ABOUT */
 
 .about{
+
     text-align:center;
     max-width:900px;
     margin:auto;
     line-height:1.8;
+
 }
-.about-subtitle{
+
+/* GUESTS */
+
+.guest-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:30px;
+}
+
+.guest-card{
+    background:rgba(0,0,0,.65);
+    backdrop-filter:blur(10px);
+
+    border:1px solid var(--gold);
+
+    border-radius:20px;
+    overflow:hidden;
+
+    transition:.4s;
+}
+
+.guest-card img{
+    width:100%;
+    height:420px;
+    object-fit:cover;
+
+    transition:.5s;
+}
+
+.guest-info{
+    padding:25px;
     text-align:center;
-    color:var(--gold-light);
-    font-size:1.3rem;
-    font-weight:500;
-    margin-bottom:25px;
-    letter-spacing:1px;
 }
+
+.guest-info h3{
+    color:var(--gold-light);
+    margin-bottom:12px;
+}
+
+.guest-info p{
+    color:#f5e7d0;
+    line-height:1.7;
+}
+
+.guest-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 0 30px rgba(212,160,23,.45);
+}
+
+.guest-card:hover img{
+    transform:scale(1.08);
+}
+
 
 /* COUNTDOWN */
 
@@ -356,6 +447,60 @@ section.show{
     opacity:1;
 }
 
+/* SPONSORS */
+
+.sponsor-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:30px;
+}
+
+.sponsor-card{
+    background:rgba(0,0,0,.65);
+    backdrop-filter:blur(10px);
+
+    border:1px solid var(--gold);
+
+    border-radius:20px;
+
+    padding:35px 25px;
+
+    text-align:center;
+
+    transition:.4s;
+}
+
+.sponsor-card img{
+    width:140px;
+    height:140px;
+
+    object-fit:contain;
+
+    margin-bottom:25px;
+
+    transition:.4s;
+}
+
+.sponsor-card h3{
+    color:var(--gold-light);
+    margin-bottom:15px;
+}
+
+.sponsor-card p{
+    color:#f5e7d0;
+    line-height:1.7;
+}
+
+.sponsor-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 0 30px rgba(212,160,23,.45);
+}
+
+.sponsor-card:hover img{
+    transform:scale(1.08);
+}
+
+
 /* CONTACT */
 
 .contact-box{
@@ -528,17 +673,18 @@ footer{
 
 .card,
 .box,
-.venue-card{
-    background:rgba(0,0,0,.65);
-    backdrop-filter:blur(10px);
+.venue-card,
+.guest-card,
+.sponsor-card{
 
-    border:1px solid var(--gold);
-}
+    background:rgba(0,0,0,.58);
 
-.card:hover,
-.box:hover,
-.venue-card:hover{
-    box-shadow:0 0 25px rgba(201,138,46,.45);
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(212,160,23,.35);
+
+    transition:.45s;
+
 }
 
 </style>
@@ -587,6 +733,66 @@ footer{
     </div>
    
 </section>
+
+<section id="guests">
+
+    <h2 class="section-title">Special Guests</h2>
+
+    <div class="guest-grid">
+
+        <div class="guest-card">
+
+            <img src="images/guest1.jpg" alt="Guest 1">
+
+            <div class="guest-info">
+
+                <h3>Guest Name</h3>
+
+                <p>
+                    Brief introduction about your special guest goes here.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="guest-card">
+
+            <img src="images/guest2.jpg" alt="Guest 2">
+
+            <div class="guest-info">
+
+                <h3>Guest Name</h3>
+
+                <p>
+                    Brief introduction about your special guest goes here.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="guest-card">
+
+            <img src="images/guest3.jpg" alt="Guest 3">
+
+            <div class="guest-info">
+
+                <h3>Guest Name</h3>
+
+                <p>
+                    Brief introduction about your special guest goes here.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
 
 <section>
     <h2 class="section-title">Countdown</h2>
@@ -721,6 +927,55 @@ footer{
         </div>
 
     </div>
+</section>
+
+<section id="sponsors">
+
+    <h2 class="section-title">Sponsors</h2>
+
+    <div class="sponsor-grid">
+
+        <div class="sponsor-card">
+
+            <img src="images/sponsor1.png" alt="Gold Sponsor">
+
+            <h3>Gold Sponsor</h3>
+
+            <p>
+                Proudly supporting Bhawa 2026 by encouraging creativity,
+                innovation and student excellence.
+            </p>
+
+        </div>
+
+        <div class="sponsor-card">
+
+            <img src="images/sponsor2.png" alt="Silver Sponsor">
+
+            <h3>Silver Sponsor</h3>
+
+            <p>
+                Helping us create an unforgettable experience for every
+                performer and audience member.
+            </p>
+
+        </div>
+
+        <div class="sponsor-card">
+
+            <img src="images/sponsor3.png" alt="Official Partner">
+
+            <h3>Official Partner</h3>
+
+            <p>
+                Working together with Bhawa 2026 to celebrate talent,
+                culture and unforgettable moments.
+            </p>
+
+        </div>
+
+    </div>
+
 </section>
 
 <section id="social">
