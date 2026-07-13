@@ -31,26 +31,31 @@ html{
     scroll-behavior:smooth;
 }
 
-
 body{
-    background:
-    linear-gradient(
-        rgba(0,0,0,.82),
-        rgba(0,0,0,.90)
-    ),
-    url("images/mask-bg.png");
-
-    background-size:cover;
-    background-position:center center;
-    background-repeat:no-repeat;
-    background-attachment:fixed;
-
+    background:#000;
     color:var(--text);
     font-family:'Poppins',sans-serif;
-
+    overflow-x:hidden;
 }
 
+
 /* HERO */
+
+.hero{
+
+    height:100vh;
+
+    background:#000;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    position:relative;
+
+}
 
 .hero-content{
     background:transparent;
@@ -85,6 +90,41 @@ body{
         0 0 40px rgba(242,201,76,.4);
 }
 
+.mask-layer{
+
+    position:fixed;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    pointer-events:none;
+
+    z-index:1;
+
+    overflow:hidden;
+
+}
+
+.background-mask{
+
+    width:650px;
+    max-width:75vw;
+
+    opacity:.22;
+
+    animation:maskFloat 7s ease-in-out infinite;
+
+    filter:
+        drop-shadow(0 0 50px rgba(212,160,23,.45));
+
+    user-select:none;
+
+}
 
 /* BUTTON */
 
@@ -138,10 +178,10 @@ section.show{
     display:inline-block;
 
     left:50%;
-
+    
     transform:translateX(-50%);
 
-    margin-bottom:70px;
+    margin: bottom 70px;px;
 
     font-size:2.7rem;
 
@@ -182,10 +222,188 @@ section.show{
 
 .about{
 
-    text-align:center;
-    max-width:900px;
+    max-width:800px;
+
     margin:auto;
-    line-height:1.8;
+
+    text-align:center;
+
+    line-height:2;
+
+    font-size:1.08rem;
+
+    color:#e8e8e8;
+
+    position:relative;
+
+}
+
+.about-quote{
+
+    text-align:center;
+
+    font-size:1.3rem;
+
+    margin-bottom:40px;
+
+    letter-spacing:2px;
+
+    font-style:italic;
+
+}
+
+.about-tags{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:15px;
+
+    flex-wrap:wrap;
+
+    margin-top:40px;
+
+}
+
+.about-tags span{
+
+    padding:10px 20px;
+
+    border:1px solid rgba(212,160,23,.4);
+
+    border-radius:30px;
+
+    background:rgba(255,255,255,.04);
+
+    color:var(--gold-light);
+
+    backdrop-filter:blur(8px);
+
+}
+
+.about-wrapper{
+
+    max-width:900px;
+
+    margin:auto;
+
+    text-align:center;
+
+}
+
+.about-small-title{
+
+    color:rgba(242,201,76,.75);
+
+    letter-spacing:6px;
+
+    font-size:.85rem;
+
+}
+
+.about-quote{
+
+    margin-top:-20px;
+
+    margin-bottom:60px;
+
+    color:rgba(242,201,76,.75);
+
+    font-size:1.25rem;
+
+    font-style:italic;
+
+    opacity:.9;
+
+}
+
+.about-content{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:28px;
+
+}
+
+.fade-line{
+
+    font-size:1.1rem;
+
+    line-height:2;
+
+    color:#e7e7e7;
+
+    opacity:0;
+
+    transform:translateY(40px);
+
+    transition:1s;
+
+}
+
+.fade-line.show{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
+
+.about-divider{
+
+    width:120px;
+
+    height:2px;
+
+    margin:60px auto 40px;
+
+    background:linear-gradient(
+        to right,
+        transparent,
+        var(--gold-light),
+        transparent
+    );
+
+}
+
+.about-tags{
+
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:15px;
+
+}
+
+.about-tags span{
+
+    padding:10px 24px;
+
+    border-radius:30px;
+
+    border:1px solid rgba(212,160,23,.35);
+
+    background:rgba(255,255,255,.04);
+
+    backdrop-filter:blur(8px);
+
+    color:var(--gold-light);
+
+    transition:.4s;
+
+}
+
+.about-tags span:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 0 20px rgba(212,160,23,.25);
 
 }
 
@@ -618,13 +836,6 @@ footer{
     align-items:center;
 }
 
-.hero-logo{
-    position:absolute;
-    width:550px;
-    max-width:85%;
-    animation:float 6s ease-in-out infinite;
-}
-
 .hero-center{
     text-align:center;
     z-index:2;
@@ -655,13 +866,16 @@ footer{
     letter-spacing:3px;
 }
 
-@keyframes float{
-    0%,100%{
-        transform:translateY(0);
-    }
-    50%{
-        transform:translateY(-15px);
-    }
+@keyframes maskFloat{
+
+0%,100%{
+transform:translateY(0px);
+}
+
+50%{
+transform:translateY(-18px);
+}
+
 }
 
 .card,
@@ -680,9 +894,31 @@ footer{
 
 }
 
+.navbar{
+
+    z-index:100;
+
+}
+
+.hero,
+section,
+footer{
+
+    position:relative;
+
+    z-index:2;
+
+    background:transparent;
+
+}
+
 </style>
 </head>
 <body>
+
+<div class="mask-layer">
+    <img src="images/mask.jpg" class="background-mask">
+</div>    
 
 <nav class="navbar">
 
@@ -700,30 +936,70 @@ footer{
 
 <section class="hero">
 
-    <img src="images/mask.jpg" class="hero-logo">
+    
 
     <div class="hero-content hero-center">
         <h1>BHAWA</h1>
-        <p>Where Fresh Talent Meets The Spotlight</p>
+        <p style="color:rgba(242,201,76,.75);">Where Fresh Talent Meets The Spotlight</p>
     </div>
 
     <div class="scroll-down">
-        Scroll Down
+        BHAWA-2026
     </div>
 
 </section>
 
 <section id="about">
-    <h2 class="section-title">About Bhawa</h2>
-    <h3 class="about-subtitle">Where Fresh Talent Meets the Spotlight</h3>
-    <div class="about">
-        <p>
-            භාව (Bhawa) is a celebration of talent, creativity,
-            and unity among students. Join us for a night of
-            music, dance, drama, and unforgettable memories.
+
+    <div class="about-wrapper">
+
+        <p class="about-quote">
+            "Where Fresh Talent Meets The Spotlight"
         </p>
+
+        <div class="about-content">
+
+            <p class="fade-line">
+                Every performance begins with a dream.
+            </p>
+
+            <p class="fade-line">
+                Every stage tells a story waiting to be heard.
+            </p>
+
+            <p class="fade-line">
+                Bhawa is a celebration of talent, creativity and unity,
+                bringing together the brightest performers of the Faculty
+                of Technology.
+            </p>
+
+            <p class="fade-line">
+                Music, dance, drama and unforgettable moments combine to
+                create an evening where passion meets performance.
+            </p>
+
+            <p class="fade-line">
+                Step into the spotlight and become part of the story.
+            </p>
+
+        </div>
+
+        <div class="about-divider"></div>
+
+        <div class="about-tags">
+
+            <span>Music</span>
+
+            <span>Dance</span>
+
+            <span>Drama</span>
+
+            <span>Talent</span>
+
+        </div>
+
     </div>
-   
+
 </section>
 
 <section id="guests">
@@ -874,7 +1150,7 @@ footer{
 </section>
 
 <section>
-    <h2 class="section-title">Programes</h2>
+    <h2 class="section-title">Programs</h2>
 
     <div class="gallery">
 
@@ -1027,6 +1303,43 @@ const observer = new IntersectionObserver(entries=>{
 document.querySelectorAll("section").forEach(el=>{
     observer.observe(el);
 });
+
+</script>
+
+<script>const lines = document.querySelectorAll(".fade-line");
+
+const lineObserver = new IntersectionObserver((entries)=>{
+
+    entries.forEach(entry=>{
+
+        if(entry.isIntersecting){
+
+            const items = entry.target.querySelectorAll(".fade-line");
+
+            items.forEach((item,index)=>{
+
+                setTimeout(()=>{
+
+                    item.classList.add("show");
+
+                },index*500);
+
+            });
+
+        }
+
+    });
+
+},{
+    threshold:0.4
+});
+
+document.querySelectorAll(".about-content").forEach(section=>{
+
+    lineObserver.observe(section);
+
+});
+
 </script>
 
 </body>
